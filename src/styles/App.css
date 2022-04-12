@@ -44,5 +44,29 @@
 
 textarea  
 {  
+   
    font-family: 'Roboto', sans-serif;  
+}
+
+button {
+    padding: 8px 24px;
+    background-color: darkcyan;
+    color: white;
+    border-radius: 20px;
+    border: 2px darkcyan solid;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(34, 34, 34);
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-button {
+    cursor: pointer;
 }

@@ -20,10 +20,10 @@ class App extends Component {
         website:'',
         address:'',
       },
-      about: '',
-      skills: [],
-      hobbies: [],
-      languages: [],
+      about: '', //done
+      skills: [], //done
+      hobbies: [], //done
+      languages: [], //done
       education: [],
       work:[],
     }
@@ -39,7 +39,8 @@ class App extends Component {
         phone:document.getElementById('phone').value,
         website:document.getElementById('website').value,
         address:document.getElementById('address').value,
-      }
+      },
+      about: document.getElementById('about').value
     })
   }
 
@@ -124,7 +125,7 @@ class App extends Component {
               <h2>About Me</h2>
               <hr></hr>
               <div className="workForm">
-                <textarea id='about' placeholder='Write a bit about yourself'/>
+                <textarea onChange={this.handleChange} value={this.state.about} id='about' placeholder='Write a bit about yourself'/>
               </div>
             </div>
             <div className='work'>
@@ -162,6 +163,7 @@ class App extends Component {
           <div className='left'>
             <h1>{this.state.personalInfo.name} {this.state.personalInfo.lastName}</h1>
             <h2>{this.state.personalInfo.title}</h2>
+            <p>{this.state.about}</p>
           </div>
           <div className='right'></div>
 

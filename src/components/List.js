@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import '../styles/list.css'
+import Icon from '@mdi/react'
+import { mdiTrashCanOutline } from '@mdi/js';
+
 
 class List extends Component {
   constructor(props) {
@@ -22,7 +25,14 @@ class List extends Component {
                     
                         <div class="list-item">
                             {item.item}
-                            <button className='remove-list-item' data-taskId={item.id}>X</button>
+                            
+                            <Icon path={mdiTrashCanOutline}
+                                title={'Delete '+item.item}
+                                size={1}
+                                color="firebrick"
+                                data-taskId={item.id}
+                                onClick={() => this.props.onDelete(item.id, this.props.cat)}
+                                />
                         </div>
                     
                     </li>
