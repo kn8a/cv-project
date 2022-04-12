@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../styles/InputSec.css'
+
 
 class InputSec extends Component {
   constructor(props) {

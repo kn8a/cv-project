@@ -5,6 +5,8 @@ import uniqid from "uniqid";
 import List from './components/List'
 import Icon from '@mdi/react'
 import { mdiPlusCircleOutline } from '@mdi/js';
+import Work from './components/Work';
+import Edu from './components/Edu';
 
 
 class App extends Component {
@@ -29,7 +31,7 @@ class App extends Component {
     }
   }
 
-  handleChange = (e) => { //handles personal info
+  handleChange = () => { //handles personal info
     this.setState({
       personalInfo: {
         name:document.getElementById('name').value, 
@@ -59,8 +61,44 @@ class App extends Component {
     const items = this.state[cat].filter(item => item.id !== itemId);
     this.setState({ [cat]: items });
   };
+
+  addWork = (event) => {
+      event.preventDefault();
+      console.log(event);
+      const item = {
+        id: uniqid(),
+        title: document.getElementById('work-title').value,
+        company: document.getElementById('work-company').value,
+        from: document.getElementById('work-from').value, 
+        to: document.getElementById('work-to').value,
+        responsibilities: document.getElementById('work-responsibilities').value,
+      }
+      this.setState({
+        work: this.state.work.concat(item)
+      })
+      document.getElementById("work-form").reset();
+    }
+  
+
+    addEdu = (event) => {
+      event.preventDefault();
+      console.log(event);
+      const item = {
+        id: uniqid(),
+        specialty: document.getElementById('edu-specialty').value,
+        school: document.getElementById('edu-school').value,
+        from: document.getElementById('edu-from').value, 
+        to: document.getElementById('edu-to').value,
+        degree: document.getElementById('edu-degree').value,
+      }
+      this.setState({
+        education: this.state.education.concat(item)
+      })
+      document.getElementById("edu-form").reset();
+    }
+
     
-  render(){
+  render() {
     return (
       <div className="app">
         <div className='main'>
@@ -130,28 +168,30 @@ class App extends Component {
             </div>
             <div className='work'>
               <h2>Work Experience</h2>
+              <Work cat='work' onDelete={this.handleDelete} items={this.state.work}/>
               <hr></hr>
-              <form className='workForm'>
-                <input placeholder='Title e.g. Software Engineer'/>
-                <input placeholder='Company'/>
+              <form className='workForm' id='work-form' onSubmit={this.addWork}>
+                <input id='work-title' placeholder='Title e.g. Software Engineer'/>
+                <input id='work-company' placeholder='Company'/>
                 <div>
-                  <input placeholder='From e.g. Feb. 2008'/>
-                  <input placeholder='To e.g. 2021/Present'/>
+                  <input id='work-from' placeholder='From e.g. Feb. 2008'/>
+                  <input id='work-to'placeholder='To e.g. 2021/Present'/>
                 </div>
-                <textarea placeholder='Responsibilities/Achievements'/>
-                <button  type='submit'>Add</button>
+                <textarea id='work-responsibilities'placeholder='Responsibilities/Achievements'/>
+                <button type='submit'>Add</button>
               </form>
             </div>
             <div className='work'>
               <h2>Education</h2>
+              <Edu cat='education' onDelete={this.handleDelete} items={this.state.education}/>
               <hr></hr>
-              <form className='workForm'>
-                <input placeholder='Specialty'/>
-                <input placeholder='Degree'/>
-                <input placeholder='School'/>
+              <form className='workForm' id='edu-form' onSubmit={this.addEdu}>
+                <input id='edu-specialty' placeholder='Specialty'/>
+                <input id='edu-degree' placeholder='Degree'/>
+                <input id='edu-school' placeholder='School'/>
                 <div className="range">
-                  <input placeholder='From e.g. Feb. 2008'/>
-                  <input placeholder='To e.g. 2021/Present'/>
+                  <input id='edu-from' placeholder='From e.g. Feb. 2008'/>
+                  <input id='edu-to' placeholder='To e.g. 2021/Present'/>
                 </div>
                 <button type='submit'>Add</button>
               </form>
