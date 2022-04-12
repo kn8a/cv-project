@@ -3,13 +3,15 @@ import './styles/App.css';
 import React, {Component} from 'react';
 import uniqid from "uniqid";
 import List from './components/List'
+import Icon from '@mdi/react'
+import { mdiPlusCircleOutline } from '@mdi/js';
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      personalInfo: {
+      personalInfo: { //personal info object
         name:"", 
         lastName:'', 
         title:'',
@@ -27,7 +29,7 @@ class App extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = (e) => { //handles personal info
     this.setState({
       personalInfo: {
         name:document.getElementById('name').value, 
@@ -41,7 +43,7 @@ class App extends Component {
     })
   }
 
-  addItem = function(category) {
+  addItem = function(category) { //adds item to skills/hobbies/languages
     const item = {
       item: document.getElementById(category).value,
       id: uniqid(),
@@ -52,7 +54,10 @@ class App extends Component {
     document.getElementById(category).value = '';
   };
 
-  
+  handleDelete = (itemId, cat) => {
+    const items = this.state[cat].filter(item => item.id !== itemId);
+    this.setState({ [cat]: items });
+  };
     
   render(){
     return (
@@ -73,28 +78,54 @@ class App extends Component {
             </form>
             <div className='skills'>
               <h2>Skills</h2>
-              <List items={this.state.skills} />
-              <input id='skills' placeholder='e.g. React'/>
-              <button onClick={() => this.addItem('skills')} className='add'>Add</button>
+              <List cat='skills' onDelete={this.handleDelete} items={this.state.skills} />
+              <div class="input">
+                <input id='skills' placeholder='e.g. React'/>
+                <Icon path={mdiPlusCircleOutline}
+                                    size={1}
+                                    color="darkcyan"
+                                    onClick={() => this.addItem('skills')}
+                                    className='add-button'
+                                    />
+                
+              </div>
             </div>
             <div className='skills'>
               <h2>Hobbies</h2>
-              <List items={this.state.hobbies} />
-              <input id='hobbies' placeholder='e.g. Tennis'/>
-              <button onClick={() => this.addItem('hobbies')} className='add'>Add</button>
+              <List cat='hobbies' onDelete={this.handleDelete} items={this.state.hobbies} />
+              <div class="input">
+                <input id='hobbies' placeholder='e.g. Tennis'/>
+                <Icon path={mdiPlusCircleOutline}
+                                  size={1}
+                                  color="darkcyan"
+                                  onClick={() => this.addItem('hobbies')}
+                                  className='add-button'
+                                  />
+              </div>
+              
+
             </div>
             <div className='skills'>
               <h2>Languages</h2>
-              <List items={this.state.languages} />
-              <input  id='languages' placeholder='e.g. English'/>
-              <button onClick={() => this.addItem('languages')} className='add'>Add</button>
+              <List cat='languages' onDelete={this.handleDelete} items={this.state.languages} />
+              <div className="input">
+                <input  id='languages' placeholder='e.g. English'/>
+                <Icon path={mdiPlusCircleOutline}
+                                    size={1}
+                                    color="darkcyan"
+                                    onClick={() => this.addItem('languages')}
+                                    className='add-button'
+                                    />
+              </div>
             </div>
           </div>
           <div className='right'>
-            <div className="about">
+            <div className="work">
               <h2>About Me</h2>
               <hr></hr>
-              <textarea id='about' placeholder='Write a bit about yourself'/>
+              <div className="workForm">
+                <textarea id='about' placeholder='Write a bit about yourself'/>
+              </div>
             </div>
             <div className='work'>
               <h2>Work Experience</h2>
@@ -114,6 +145,7 @@ class App extends Component {
               <h2>Education</h2>
               <hr></hr>
               <form className='workForm'>
+                <input placeholder='Specialty'/>
                 <input placeholder='Degree'/>
                 <input placeholder='School'/>
                 <div className="range">
