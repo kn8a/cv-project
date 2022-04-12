@@ -1,0 +1,48 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    gap: 3vw;
+    display: flex;
+    max-width: 980px;
+    border: 1px solid red;
+    flex: 1;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.personal {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vh;
+}
+
+.language {
+    display: flex;
+    flex-direction: column;
+}
+
+.proficiency {
+    display: flex;
+}
+
+.workForm {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vh;
+}
+
+textarea  
+{  
+   font-family: 'Roboto', sans-serif;  
+}

@@ -1,0 +1,15 @@
+.list-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
