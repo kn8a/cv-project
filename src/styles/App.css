@@ -1,6 +1,17 @@
 .app {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.control-buttons{
+    display: flex;
+    gap: 0.5vw;
 }
 
 .main {
@@ -49,9 +60,9 @@ textarea
 }
 
 button {
-    padding: 8px 24px;
-    background-color: darkcyan;
-    color: white;
+    padding: 6px 16px;
+    color: darkcyan;
+    background-color: white;
     border-radius: 20px;
     border: 2px darkcyan solid;
     font-weight: 600;
@@ -59,7 +70,8 @@ button {
 }
 
 button:hover {
-    background-color: rgb(34, 34, 34);
+    background-color: darkcyan;
+    color: white;
 }
 
 .input {
@@ -67,6 +79,6 @@ button:hover {
     justify-content: space-between;
 }
 
-.add-button {
+.small-button {
     cursor: pointer;
 }

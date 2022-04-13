@@ -10,33 +10,25 @@ class List extends Component {
     }
 
 
-
   render(){
-
     const items = this.props.items;
-    console.log(items);
     return (
       <div className='itemList'>
         <ul>
             {items.map((item) => {
                 return (
-                
                     <li id={item.id} key={item.id}>
-                    
-                        <div class="list-item">
+                        <div className="list-item">
                             {item.item}
-                            
                             <Icon path={mdiTrashCanOutline}
                                 title={'Delete '+item.item}
                                 size={1}
                                 color="firebrick"
-                                data-taskId={item.id}
+                                className='small-button'
                                 onClick={() => this.props.onDelete(item.id, this.props.cat)}
                                 />
                         </div>
-                    
                     </li>
-                
                 )
             })}
         </ul>

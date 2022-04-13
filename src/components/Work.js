@@ -4,46 +4,35 @@ import Icon from '@mdi/react'
 import { mdiTrashCanOutline } from '@mdi/js';
 import '../styles/work.css'
 
-
 class Work extends Component {
   constructor(props) {
     super(props);
     }
 
-
-
   render(){
-
     const items = this.props.items;
-    console.log(items);
     return (
       <div className='itemList'>
         <ul>
             {items.map((item) => {
                 return (
-                
                     <li id={item.id} key={item.id}>
-                    
                         <div className="list-item">
-                            
-                            <div class="work-list">
+                            <div className="work-list">
                                 <div>{item.title}</div>
                                 <div>{item.company}</div>
                                 <div>from {item.from} to {item.to}</div>
                                 <div>{item.responsibilities}</div>
                             </div>
-                            
-                            
                             <Icon path={mdiTrashCanOutline}
                                 title={'Delete'}
                                 size={1}
                                 color="firebrick"
+                                className='small-button'
                                 onClick={() => this.props.onDelete(item.id, this.props.cat)}
                                 />
                         </div>
-                    
                     </li>
-                
                 )
             })}
         </ul>

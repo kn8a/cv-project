@@ -64,7 +64,6 @@ class App extends Component {
 
   addWork = (event) => {
       event.preventDefault();
-      console.log(event);
       const item = {
         id: uniqid(),
         title: document.getElementById('work-title').value,
@@ -82,7 +81,6 @@ class App extends Component {
 
     addEdu = (event) => {
       event.preventDefault();
-      console.log(event);
       const item = {
         id: uniqid(),
         specialty: document.getElementById('edu-specialty').value,
@@ -97,11 +95,48 @@ class App extends Component {
       document.getElementById("edu-form").reset();
     }
 
+  loadInfo = () => {
+    this.setState({
+      personalInfo: { //personal info object
+        name:"John", 
+        lastName:'Doe', 
+        title:'Web Developer',
+        email:'johndoe@email.com',
+        phone:'(123) 456-7890',
+        website:'johndoedevelopment.com',
+        address:'San Jose, CA',
+      },
+      about: 'Derivative Works in Source or Object form, that is to exercise the rights and limitations under the terms of any change; and (c) If You created one or more of the Derived Program shall be reformed only to the extent necessary to use, reproduce, display, perform, sublicense and distribute the Larger Work as permitted above, be liable to you for damages, including any general, special, incidental or consequential damages of any component so that it is the initial grant or subsequently acquired, any and all other entities that control, are controlled by, or is derived from the new version.', //done
+      skills: [], //done
+      hobbies: [], //done
+      languages: [], //done
+      education: [],
+      work:[],
+    })
+  }  
+
+  viewer = () => {
+    document.getElementById('editor').style.display='none';
+    document.getElementById('viewer').style.display='flex';
+  }
+
+  editor = () => {
+    document.getElementById('viewer').style.display='none';
+    document.getElementById('editor').style.display='flex';
+  }
     
   render() {
     return (
       <div className="app">
-        <div className='main'>
+        
+        <div className="header">
+          <h1>CV Builder</h1>
+          <div className='control-buttons'>
+            <button onClick={this.editor}>Editor</button>
+            <button onClick={this.viewer}>View CV</button>
+          </div>
+        </div>
+        <div id='editor' className='main'>
           <div className="left">
             <form action="">
               <div className='personal'>
@@ -118,7 +153,7 @@ class App extends Component {
             <div className='skills'>
               <h2>Skills</h2>
               <List cat='skills' onDelete={this.handleDelete} items={this.state.skills} />
-              <div class="input">
+              <div className="input">
                 <input id='skills' placeholder='e.g. React'/>
                 <Icon path={mdiPlusCircleOutline}
                                     size={1}
@@ -132,17 +167,15 @@ class App extends Component {
             <div className='skills'>
               <h2>Hobbies</h2>
               <List cat='hobbies' onDelete={this.handleDelete} items={this.state.hobbies} />
-              <div class="input">
+              <div className="input">
                 <input id='hobbies' placeholder='e.g. Tennis'/>
                 <Icon path={mdiPlusCircleOutline}
                                   size={1}
                                   color="darkcyan"
                                   onClick={() => this.addItem('hobbies')}
-                                  className='add-button'
+                                  className='small-button'
                                   />
               </div>
-              
-
             </div>
             <div className='skills'>
               <h2>Languages</h2>
@@ -197,16 +230,16 @@ class App extends Component {
               </form>
             </div>
           </div>
-        
         </div>
-        <div className='main'>
+        <div id='viewer' className='main'>
           <div className='left'>
             <h1>{this.state.personalInfo.name} {this.state.personalInfo.lastName}</h1>
             <h2>{this.state.personalInfo.title}</h2>
             <p>{this.state.about}</p>
           </div>
-          <div className='right'></div>
+          <div className='right'>
 
+          </div>
         </div>
       </div>
     );
