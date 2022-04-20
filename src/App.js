@@ -4,9 +4,23 @@ import React, {Component} from 'react';
 import uniqid from "uniqid";
 import List from './components/List'
 import Icon from '@mdi/react'
-import { mdiPlusCircleOutline } from '@mdi/js';
+import { 
+  mdiPlusCircleOutline, 
+  mdiCellphoneBasic, 
+  mdiAt, 
+  mdiWeb, 
+  mdiMapMarkerOutline, 
+  mdiCommentAccountOutline, //user icon
+  mdiSchoolOutline, //education
+  mdiBriefcaseCheckOutline, //work
+  mdiTennis, //tennis
+
+} from '@mdi/js';
 import Work from './components/Work';
 import Edu from './components/Edu';
+import ListView from './components/ListView';
+import WorkView from './components/WorkView';
+import EduView from './components/EduView';
 
 
 class App extends Component {
@@ -118,24 +132,29 @@ class App extends Component {
   viewer = () => {
     document.getElementById('editor').style.display='none';
     document.getElementById('viewer').style.display='flex';
+    document.getElementById('editor-button').style.display = 'block'
+    document.getElementById('viewer-button').style.display = 'none'
+
   }
 
   editor = () => {
     document.getElementById('viewer').style.display='none';
     document.getElementById('editor').style.display='flex';
+    document.getElementById('editor-button').style.display = 'none'
+    document.getElementById('viewer-button').style.display = 'block'
   }
     
   render() {
     return (
       <div className="app">
-        
-        <div className="header">
+        			<div className="header">
           <h1>CV Builder</h1>
           <div className='control-buttons'>
-            <button onClick={this.editor}>Editor</button>
-            <button onClick={this.viewer}>View CV</button>
+            <button id="editor-button" onClick={this.editor}>Editor</button>
+            <button id="viewer-button" onClick={this.viewer}>View CV</button>
           </div>
         </div>
+
         <div id='editor' className='main'>
           <div className="left">
             <form action="">
@@ -233,12 +252,91 @@ class App extends Component {
         </div>
         <div id='viewer' className='main'>
           <div className='left'>
-            <h1>{this.state.personalInfo.name} {this.state.personalInfo.lastName}</h1>
-            <h2>{this.state.personalInfo.title}</h2>
-            <p>{this.state.about}</p>
-          </div>
-          <div className='right'>
+            <div className='left-top'>
+              <img src='https://dummyimage.com/150x150.png' alt=''/>
+              <div className='view-name'>{this.state.personalInfo.name}</div>
+              <div className='view-last-name'>{this.state.personalInfo.lastName}</div>
+              <div className='view-title'>{this.state.personalInfo.title}</div>
+            </div>
 
+            <div className='left-bottom'>
+              <div>
+                <div className='items-view-title'>Personal Info</div>
+                <div className='personal-info-view'>
+                  
+                  <div className='view-personal-item'><Icon path={mdiCellphoneBasic}
+                                title={'phone'}
+                                size={1}
+                                color="darkcyan"
+                                />
+                        <div>{this.state.personalInfo.phone}</div>
+                  </div>
+                  <div className='view-personal-item'><Icon path={mdiAt}
+                                title={'email'}
+                                size={1}
+                                color="darkcyan"
+                                />
+                        <div>{this.state.personalInfo.email}</div>
+                  </div>
+
+                  <div className='view-personal-item'><Icon path={mdiWeb}
+                                title={'website'}
+                                size={1}
+                                color="darkcyan"
+                                />
+                        <div>{this.state.personalInfo.website}</div>
+                  </div>
+                  <div className='view-personal-item'><Icon path={mdiMapMarkerOutline}
+                                title={'location'}
+                                size={1}
+                                color="darkcyan"
+                                />
+                        <div>{this.state.personalInfo.address}</div>
+                  </div>
+
+                </div>
+              </div>
+              <ListView secTitle='Skills' items={this.state.skills}/>
+              <ListView secTitle='Languages' items={this.state.languages}/>
+            </div>
+          </div>
+          <div className='right-viewer'>
+            <div>
+              <div className='view-right-title'>
+                <Icon path={mdiCommentAccountOutline}
+                                  horizontal
+                                  title={'location'}
+                                  size={2}
+                                  color="darkcyan"
+                                  />
+                <div className='view-right-title-text'>About Me</div>
+              </div>
+              <p id='view-about'>{this.state.about}</p>
+            </div>
+            <div>
+              <div className='view-right-title'>
+                <Icon path={mdiBriefcaseCheckOutline}
+                                  title={'location'}
+                                  size={2}
+                                  color="darkcyan"
+                                  />
+                <div className='view-right-title-text'>Work Experience</div>
+              
+              </div>
+              <WorkView items={this.state.work}/>
+            </div>
+            <div>
+              <div className='view-right-title'>
+                <Icon path={mdiSchoolOutline}
+                                  title={'location'}
+                                  size={2}
+                                  color="darkcyan"
+                                  />
+                <div className='view-right-title-text'>Education</div>
+                <hr></hr>
+              </div>
+              <EduView items={this.state.education}/>
+            </div>
           </div>
         </div>
       </div>
