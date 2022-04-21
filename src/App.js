@@ -134,7 +134,6 @@ class App extends Component {
     document.getElementById('viewer').style.display='flex';
     document.getElementById('editor-button').style.display = 'block'
     document.getElementById('viewer-button').style.display = 'none'
-
   }
 
   editor = () => {
@@ -176,11 +175,8 @@ class App extends Component {
             <button id="clear-info-button" onClick={this.clearInfo}>Clear All Info</button>
             <button id="editor-button" onClick={this.editor}>Back to Editor</button>
             <button id="viewer-button" onClick={this.viewer}>View CV</button>
-
-
           </div>
         </div>
-
         <div id='editor' className='main'>
           <div className="left">
             <form action="">
@@ -200,13 +196,7 @@ class App extends Component {
               <List cat='skills' onDelete={this.handleDelete} items={this.state.skills} />
               <div className="input">
                 <input id='skills' placeholder='e.g. React'/>
-                <Icon path={mdiPlusCircleOutline}
-                                    size={1}
-                                    color="darkcyan"
-                                    onClick={() => this.addItem('skills')}
-                                    className='add-button'
-                                    />
-                
+                <Icon path={mdiPlusCircleOutline} size={1} color="darkcyan" onClick={() => this.addItem('skills')} className='add-button' /> 
               </div>
             </div>
             <div className='skills'>
@@ -214,12 +204,7 @@ class App extends Component {
               <List cat='hobbies' onDelete={this.handleDelete} items={this.state.hobbies} />
               <div className="input">
                 <input id='hobbies' placeholder='e.g. Tennis'/>
-                <Icon path={mdiPlusCircleOutline}
-                                  size={1}
-                                  color="darkcyan"
-                                  onClick={() => this.addItem('hobbies')}
-                                  className='small-button'
-                                  />
+                <Icon path={mdiPlusCircleOutline} size={1} color="darkcyan" onClick={() => this.addItem('hobbies')} className='small-button' />
               </div>
             </div>
             <div className='skills'>
@@ -227,12 +212,7 @@ class App extends Component {
               <List cat='languages' onDelete={this.handleDelete} items={this.state.languages} />
               <div className="input">
                 <input  id='languages' placeholder='e.g. English'/>
-                <Icon path={mdiPlusCircleOutline}
-                                    size={1}
-                                    color="darkcyan"
-                                    onClick={() => this.addItem('languages')}
-                                    className='add-button'
-                                    />
+                <Icon path={mdiPlusCircleOutline} size={1} color="darkcyan" onClick={() => this.addItem('languages')} className='add-button'/>
               </div>
             </div>
           </div>
@@ -284,42 +264,27 @@ class App extends Component {
               <div className='view-last-name'>{this.state.personalInfo.lastName}</div>
               <div className='view-title'>{this.state.personalInfo.title}</div>
             </div>
-
             <div className='left-bottom'>
               <div>
                 <div className='items-view-title'>Personal Info</div>
                 <div className='personal-info-view'>
-                  
-                  <div className='view-personal-item'><Icon path={mdiCellphoneBasic}
-                                title={'phone'}
-                                size={1}
-                                color="darkcyan"
-                                />
+                  <div className='view-personal-item'>
+                        <Icon path={mdiCellphoneBasic} title={'phone'} size={1} color="darkcyan"/>
                         <div>{this.state.personalInfo.phone}</div>
                   </div>
-                  <div className='view-personal-item'><Icon path={mdiAt}
-                                title={'email'}
-                                size={1}
-                                color="darkcyan"
-                                />
+                  <div className='view-personal-item'>
+                        <Icon path={mdiAt} title={'email'} size={1} color="darkcyan"/>
                         <div>{this.state.personalInfo.email}</div>
                   </div>
 
-                  <div className='view-personal-item'><Icon path={mdiWeb}
-                                title={'website'}
-                                size={1}
-                                color="darkcyan"
-                                />
+                  <div className='view-personal-item'>
+                        <Icon path={mdiWeb} title={'website'} size={1} color="darkcyan"/>
                         <div>{this.state.personalInfo.website}</div>
                   </div>
-                  <div className='view-personal-item'><Icon path={mdiMapMarkerOutline}
-                                title={'location'}
-                                size={1}
-                                color="darkcyan"
-                                />
+                  <div className='view-personal-item'>
+                        <Icon path={mdiMapMarkerOutline} title={'location'} size={1} color="darkcyan"/>
                         <div>{this.state.personalInfo.address}</div>
                   </div>
-
                 </div>
               </div>
               <ListView secTitle='Skills' items={this.state.skills}/>
@@ -330,35 +295,21 @@ class App extends Component {
           <div className='right-viewer'>
             <div>
               <div className='view-right-title'>
-                <Icon path={mdiCommentAccountOutline}
-                                  horizontal
-                                  title={'location'}
-                                  size={2}
-                                  color="darkcyan"
-                                  />
+                <Icon path={mdiCommentAccountOutline} horizontal title={'location'} size={2} color="darkcyan" />
                 <div className='view-right-title-text'>About Me</div>
               </div>
               <p id='view-about'>{this.state.about}</p>
             </div>
             <div>
               <div className='view-right-title'>
-                <Icon path={mdiBriefcaseCheckOutline}
-                                  title={'location'}
-                                  size={2}
-                                  color="darkcyan"
-                                  />
+                <Icon path={mdiBriefcaseCheckOutline} title={'location'} size={2} color="darkcyan" />
                 <div className='view-right-title-text'>Work Experience</div>
-              
               </div>
               <WorkView items={this.state.work}/>
             </div>
             <div>
               <div className='view-right-title'>
-                <Icon path={mdiSchoolOutline}
-                                  title={'location'}
-                                  size={2}
-                                  color="darkcyan"
-                                  />
+                <Icon path={mdiSchoolOutline} title={'location'} size={2} color="darkcyan" />
                 <div className='view-right-title-text'>Education</div>
                 <hr></hr>
               </div>
