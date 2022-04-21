@@ -168,7 +168,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        			<div className="header">
+        <div className="header">
           <h1>CV Builder</h1>
           <div className='control-buttons'>
             <button id="load-template-button" onClick={this.loadTemplate}>Load Template Info</button>
