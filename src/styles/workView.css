@@ -1,0 +1,40 @@
+.work-view-itemList {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2vw;
+}
+
+.work-view-item {
+    display:flex;
+    flex-direction: column;
+    
+
+}
+
+.company-date {
+    margin-top: 1vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-view-company {
+    
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.item-view-date {
+    font-weight: 300;
+}
+
+.item-view-title {
+    font-weight: 300;
+    margin-bottom: 1vh;
+}
+
+.item-view-responsibility {
+    font-weight: 300;
+
+    overflow-wrap: anywhere;
+    margin-bottom: 1vh;
+}

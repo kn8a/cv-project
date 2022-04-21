@@ -26,7 +26,7 @@ class Work extends Component {
                             </div>
                             <Icon path={mdiTrashCanOutline}
                                 title={'Delete'}
-                                size={1}
+                                size={2}
                                 color="firebrick"
                                 className='small-button'
                                 onClick={() => this.props.onDelete(item.id, this.props.cat)}

@@ -1,0 +1,11 @@
+.items-view-title {
+    border-bottom: 2px darkcyan solid;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+
+.view-list-item {
+    color: white;
+}

@@ -109,18 +109,18 @@ class App extends Component {
       document.getElementById("edu-form").reset();
     }
 
-  loadInfo = () => {
+  clearInfo = () => {
     this.setState({
       personalInfo: { //personal info object
-        name:"John", 
-        lastName:'Doe', 
-        title:'Web Developer',
-        email:'johndoe@email.com',
-        phone:'(123) 456-7890',
-        website:'johndoedevelopment.com',
-        address:'San Jose, CA',
+        name:"", 
+        lastName:'', 
+        title:'',
+        email:'',
+        phone:'',
+        website:'',
+        address:'',
       },
-      about: 'Derivative Works in Source or Object form, that is to exercise the rights and limitations under the terms of any change; and (c) If You created one or more of the Derived Program shall be reformed only to the extent necessary to use, reproduce, display, perform, sublicense and distribute the Larger Work as permitted above, be liable to you for damages, including any general, special, incidental or consequential damages of any component so that it is the initial grant or subsequently acquired, any and all other entities that control, are controlled by, or is derived from the new version.', //done
+      about: '', //done
       skills: [], //done
       hobbies: [], //done
       languages: [], //done
@@ -143,6 +143,28 @@ class App extends Component {
     document.getElementById('editor-button').style.display = 'none'
     document.getElementById('viewer-button').style.display = 'block'
   }
+
+  loadTemplate = () => {
+    this.setState({
+      personalInfo: { //personal info object
+        name:"John", 
+        lastName:'Doe', 
+        title:'Software Engineer',
+        email:'john@doe.com',
+        phone:'(123) 456-7890',
+        website:'johndoecoder.com',
+        address:'San Jose, CA',
+      },
+      about: 'Lorem ipsum dolor sit amet. Est velit explicabo ab similique ratione eum tenetur aspernatur. Sit inventore nisi hic incidunt reprehenderit qui maxime fugiat et voluptatem magni et molestiae soluta qui accusamus suscipit et eaque sequi. Nam explicabo illo hic rerum animi et omnis velit At eius voluptatem.', //done
+      skills: [{id:uniqid(), item: 'JavaScript'}, {id:uniqid(), item: 'React JS'}, {id:uniqid(), item: 'NPM'}, {id:uniqid(), item: 'Webpack'}], //done
+      hobbies: [{id:uniqid(), item: 'Tennis'}, {id:uniqid(), item: 'Soccer'}, {id:uniqid(), item: 'Hiking'}, {id:uniqid(), item: 'Camping'}], //done
+      languages: [{id:uniqid(), item: 'English'}, {id:uniqid(), item: 'German'}, {id:uniqid(), item: 'Spanish'}], //done
+      education: [{id:uniqid(), school: 'Harvard', degree: 'Bachelor’s degree', specialty: 'Computer Science', from: '2008', to:'2012'}],
+      work:[{id:uniqid(), company: 'IBM', from: 'June 2015', to: 'Present', title: 'Senior Full Stack Developer', responsibilities:'Lorem ipsum dolor sit amet. Aut velit esse est odit dignissimos ea iste nostrum sit voluptatibus excepturi. Vel voluptas rerum qui dolor inventore et laudantium'},
+      {id:uniqid(), company: 'Google', from: 'January 2012', to: 'April 2015', title: 'Full Stack Developer', responsibilities:'Lorem ipsum dolor sit amet. Aut velit esse est odit dignissimos ea iste nostrum sit voluptatibus excepturi. Vel voluptas rerum qui dolor inventore et laudantium'}
+    ],
+    })
+  }
     
   render() {
     return (
@@ -150,8 +172,12 @@ class App extends Component {
         			<div className="header">
           <h1>CV Builder</h1>
           <div className='control-buttons'>
-            <button id="editor-button" onClick={this.editor}>Editor</button>
+            <button id="load-template-button" onClick={this.loadTemplate}>Load Template Info</button>
+            <button id="clear-info-button" onClick={this.clearInfo}>Clear All Info</button>
+            <button id="editor-button" onClick={this.editor}>Back to Editor</button>
             <button id="viewer-button" onClick={this.viewer}>View CV</button>
+
+
           </div>
         </div>
 
@@ -298,6 +324,7 @@ class App extends Component {
               </div>
               <ListView secTitle='Skills' items={this.state.skills}/>
               <ListView secTitle='Languages' items={this.state.languages}/>
+              <ListView secTitle='Hobbies' items={this.state.hobbies}/>
             </div>
           </div>
           <div className='right-viewer'>
