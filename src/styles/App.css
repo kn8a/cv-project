@@ -167,3 +167,7 @@ button:hover {
 #view-about {
     white-space: pre-line;
 }
+
+#viewer {
+    display: none;
+}
