@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   justify-content: center;
-  border: 1px blue solid;
+  border: 0px blue solid;
 }
 
 code {

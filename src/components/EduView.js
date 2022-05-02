@@ -1,13 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../styles/workView.css';
 
-class EduView extends Component {
-  constructor(props) {
-    super(props);
-    }
-
-  render(){
-    const items = this.props.items;
+function EduView(props) {
+  const items = props.items;
     return (
       <div className='work-view-itemList'>
         <ul>
@@ -28,7 +23,7 @@ class EduView extends Component {
         </ul>
       </div>
     );
-  }
 }
+
 
 export default EduView;

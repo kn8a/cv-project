@@ -1,18 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../styles/itemView.css'
 
 
-class ListView extends Component {
-  constructor(props) {
-    super(props);
-    }
-
-
-  render(){
-    const items = this.props.items;
+function ListView(props) {
+  const items = props.items;
     return (
       <div className='itemList-view'>
-          <div className='items-view-title'>{this.props.secTitle}</div>
+          <div className='items-view-title'>{props.secTitle}</div>
         <ul>
             {items.map((item) => {
                 return (
@@ -26,7 +20,7 @@ class ListView extends Component {
         </ul>
       </div>
     );
-  }
 }
+
 
 export default ListView;

@@ -1,17 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../styles/list.css'
 import Icon from '@mdi/react'
 import { mdiTrashCanOutline } from '@mdi/js';
 
 
-class List extends Component {
-  constructor(props) {
-    super(props);
-    }
-
-
-  render(){
-    const items = this.props.items;
+function List(props) {
+  const items = props.items;
     return (
       <div className='itemList'>
         <ul>
@@ -21,11 +15,11 @@ class List extends Component {
                         <div className="list-item">
                             {item.item}
                             <Icon path={mdiTrashCanOutline}
-                                title={'Delete '+item.item}
+                                title={'Delete '+ item.item}
                                 size={1}
                                 color="firebrick"
                                 className='small-button'
-                                onClick={() => this.props.onDelete(item.id, this.props.cat)}
+                                onClick={() => props.onDelete(item.id, props.cat)}
                                 />
                         </div>
                     </li>
@@ -34,7 +28,7 @@ class List extends Component {
         </ul>
       </div>
     );
-  }
 }
+
 
 export default List;
