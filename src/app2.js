@@ -58,22 +58,40 @@ function App2 () {
             id: uniqid(),
           }
         console.log(item);
-        if (category == 'skills'){
+        if (category === 'skills'){
             setSkills(state => [...skills, item]);
         }
-        if (category == 'hobbies'){
+        if (category === 'hobbies'){
             setHobbies(state => [...hobbies, item]);
         }
-        if (category == 'languages'){
+        if (category === 'languages'){
             setLanguages(state => [...languages, item]);
         }
         document.getElementById(category).value = '';
       };
     
     const handleDelete = (itemId, cat) => { //TODO
-        const items = window[cat].filter(item => item.id !== itemId);
-        const setName = 'set'+cat;
-        window[setName](items)
+        if ( cat === 'skills') {
+            const items = skills.filter(item => item.id !== itemId)
+            setSkills(items)
+        }
+        if ( cat === 'hobbies') {
+            const items = hobbies.filter(item => item.id !== itemId)
+            setHobbies(items)
+        }
+        if ( cat === 'languages') {
+            const items = languages.filter(item => item.id !== itemId)
+            setLanguages(items)
+        }
+        if ( cat === 'work') {
+            const items = work.filter(item => item.id !== itemId)
+            setWork(items)
+        }
+        if ( cat === 'education') {
+            const items = education.filter(item => item.id !== itemId)
+            setEducation(items)
+        }
+
 
       };
     
@@ -183,7 +201,7 @@ function App2 () {
     
     const editSkills = (<div className='skills'>
     <h2>Skills</h2>
-    <List cat='skills' items={skills} onDelete={()=>handleDelete()}  />
+    <List cat='skills' items={skills} onDelete={handleDelete}  />
     <div className="input">
       <input id='skills' placeholder='e.g. React'/>
       <Icon path={mdiPlusCircleOutline} size={1} color="darkcyan" onClick={() => addItem('skills')} className='add-button' /> 
@@ -192,7 +210,7 @@ function App2 () {
 
     const editHobbies = (<div className='skills'>
                 <h2>Hobbies</h2>
-                <List cat='hobbies' items={hobbies} onDelete={()=>handleDelete()}  />
+                <List cat='hobbies' items={hobbies} onDelete={handleDelete}  />
                 <div className="input">
                   <input id='hobbies' placeholder='e.g. Tennis'/>
                   <Icon path={mdiPlusCircleOutline} size={1} color="darkcyan" onClick={() => addItem('hobbies')} className='small-button' />
@@ -201,7 +219,7 @@ function App2 () {
 
     const editLanguages = (<div className='skills'>
                 <h2>Languages</h2>
-                <List cat='languages' items={languages} onDelete={()=>handleDelete()}  />
+                <List cat='languages' items={languages} onDelete={handleDelete}  />
                 <div className="input">
                   <input  id='languages' placeholder='e.g. English'/>
                   <Icon path={mdiPlusCircleOutline} size={1} color="darkcyan" onClick={() => addItem('languages')} className='add-button'/>
@@ -218,7 +236,7 @@ function App2 () {
 
     const editWork = (<div className='work'>
             <h2>Work Experience</h2>
-            <Work items={work} cat='work' onDelete={()=>handleDelete()} />
+            <Work items={work} cat='work' onDelete={handleDelete} />
             <hr></hr>
             <form className='workForm' id='work-form' onSubmit={addWork}>
                 <input id='work-title' placeholder='Title e.g. Software Engineer'/>
@@ -234,7 +252,7 @@ function App2 () {
 
     const editEducation = (<div className='work'>
             <h2>Education</h2>
-            <Edu items={education} cat='education' onDelete={()=>handleDelete()} />
+            <Edu items={education} cat='education' onDelete={handleDelete} />
             <hr></hr>
             <form className='workForm' id='edu-form' onSubmit={addEdu}>
                 <input id='edu-specialty' placeholder='Specialty'/>
