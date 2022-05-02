@@ -5,6 +5,7 @@ import { mdiTrashCanOutline } from '@mdi/js';
 
 
 function List(props) {
+  console.log(props.onDelete)
   const items = props.items;
     return (
       <div className='itemList'>
